@@ -1,0 +1,552 @@
+
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #002236 url(../images/img01.gif) repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #181B20;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	
+	
+	font-weight: normal;
+	color: #2483A6;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #2483A6;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+img.border {
+	border: 6px solid #EEE7DF;
+}
+
+img.alignleft {
+	float: left;
+	margin-right: 25px;
+}
+
+img.alignright {
+	float: right;
+}
+
+img.aligncenter {
+	margin: 0px auto;
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0;
+	background: url(../images/img03.gif) no-repeat center top;
+}
+
+/* Header */
+
+#header-wrapper {
+	height: 167px;
+	background: url(../images/img02.gif) no-repeat center top;
+}
+
+#header {
+	width: 960px;
+	height: 167px;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+#logo {
+	width: 980px;
+	margin: 0px auto;
+	padding: 40px 0px 0px 0px;
+	color: #FFFFFF;
+}
+
+#logo h1, #logo p {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+#logo h1 {
+	margin: 0px;
+	letter-spacing: -1px;
+	text-align: center;
+	
+	font-size: 40px;
+	
+	color: #FFFFFF;
+}
+
+#logo h1  {
+	color: #FFFFFF;
+}
+
+
+/* Search */
+
+#search {
+	float: right;
+	width: 280px;
+	height: 100px;
+	padding: 0;
+}
+
+#search form {
+	height: 41px;
+	margin: 0;
+	padding: 60px 0 0 30px;
+}
+
+#search fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#search-text {
+	width: 195px;
+	padding: 6px 10px;
+	border: none;
+	background: #FFFFFF;
+	text-transform: lowercase;
+	font: normal 11px Arial, Helvetica, sans-serif;
+	color: #7F7F81;
+}
+
+#search-submit {
+	display: none;
+}
+
+/* Menu */
+
+#menu-wrapper {
+	background: url(../images/img03.gif) no-repeat center top;
+	height: 58px;
+}
+/*
+#menu {
+	width: 940px;
+	height: 58px;
+	margin: 0px auto;
+	padding: 0px 20px 0px 20px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	height: 56px;
+	margin: 0px;
+	padding: 0px 30px 0px 30px;
+	line-height: 56px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #B5B5B5;
+	border: none;
+}
+
+#menu .current_page_item a {
+	color: #FFFFFF;
+}
+
+#menu a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Page */
+
+#page {
+	background: url(../images/img05.gif) repeat-y center top;
+}
+
+#page-bgtop {
+	background: url(../images/img04.gif) no-repeat center top;
+}
+
+#page-bgbtm {
+	overflow: hidden;
+	padding: 40px 30px 0px 30px;
+	background: url(../images/img06.gif) no-repeat center bottom;
+}
+
+#page-content {
+	width: 920px;
+	margin: 0px auto;
+        min-height: 350px;
+}
+#login-page-content {
+	width: 920px;
+        height:500px;
+	margin: 0px auto;
+}
+#login-content {
+	float: none;
+	width: 920px;
+	padding: 0px 0px 0px 0px;
+}
+
+/* Content */
+
+#content {
+	float: none;
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+}
+
+.post {
+	clear: both;
+	padding-bottom: 10px;
+}
+
+.post .title {
+	padding-top: 10px;
+	letter-spacing: -2px;
+}
+
+.post .title a {
+	color: #2483A6;
+	border: none;
+}
+
+.post .meta {
+	padding-bottom: 10px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: italic;
+}
+
+.post .meta a {
+}
+
+.post .entry {
+	text-align: justify;
+	margin-bottom: 25px;
+	padding: 10px 0px 0px 0px;
+}
+
+.links {
+	display: block;
+	width: 96px;
+	padding: 2px 0px 2px 0px;
+	background: #A53602;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+/* Sidebar 
+
+#sidebar {
+	float: right;
+	width: 230px;
+	padding: 0px 0px 0px 0px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar li ul {
+	margin: 0px 15px;
+	padding-bottom: 30px;
+}
+
+#sidebar li li {
+	line-height: 35px;
+}
+
+#sidebar li li span {
+	display: block;
+	margin-top: -20px;
+	padding: 0;
+	font-size: 11px;
+	font-style: italic;
+}
+
+#sidebar li li a {
+	color: #181B20;
+}
+
+#sidebar h2 {
+	height: 38px;
+	margin-bottom: 20px;
+	padding: 12px 0 0 15px;
+	border-bottom: 1px dashed #B3B0B0;
+	letter-spacing: -1px;
+	font-size: 24px;
+	color: #2483A6;
+}
+
+#sidebar p {
+	margin: 0 0px;
+	padding: 0px 20px 20px 20px;
+	text-align: justify;
+}
+
+#sidebar a {
+	border: none;
+}
+
+#sidebar a:hover {
+	text-decoration: underline;
+}
+
+/* Calendar */
+
+#calendar {
+}
+
+#calendar_wrap {
+	padding: 20px;
+}
+
+#calendar table {
+	width: 100%;
+}
+
+#calendar tbody td {
+	text-align: center;
+}
+
+#calendar #next {
+	text-align: right;
+}
+
+/* Footer */
+
+#footer {
+	width: 960px;
+	height: 55px;
+	margin: 0px auto 40px auto;
+	background: url(../images/img07.gif) no-repeat center top;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer p {
+	margin: 0;
+	padding-top: 18px;
+	line-height: normal;
+	text-align: center;
+	color: #576475;
+}
+
+#footer a {
+	color: #576475;
+}
+#menu {
+        width: 960px;
+	height: 58px;
+	margin: 0px auto;
+	padding: 0px 10px 0px 10px;
+	font-family: Bitter, serif;
+	height: 60px;
+	border-top: solid 1px #FFDF69;
+	
+	
+	background: url(../images/img02.gif) repeat-x top left;
+	line-height: 60px;
+        color: #B5B5B5;
+	font-size: 1.2em;
+	text-transform: uppercase;
+        font-weight:bolder;
+	text-decoration: none;
+	text-align: center;
+	text-shadow: 0px 1px 2px rgba(0,0,0,0.6);
+}
+
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#menu ul li {
+	position: relative;
+	display: inline-block;
+	height: 60px;
+	padding: 1px 15px 0 15px;
+}
+
+#menu ul li.active {
+	/*background:#FFFFFF ;*/
+
+
+	border-top: solid 1px #B5B5B5;;
+	padding-top: 0;
+}
+
+#menu ul li a {
+	color: #B5B5B5;
+	text-decoration: none;
+}
+
+#menu ul li .down-arrow {
+	display: inline-block;
+	margin: 0 0 0 0.5em;
+	position: relative;
+	width: 0;
+	height: 0;
+	top: -2px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 7px solid #AF7A1D;
+}
+
+#menu ul li.active .down-arrow {
+	border-top: 7px solid #000000;
+}
+
+.dropotron {
+	font-family: Bitter, serif;
+	width: 250px;
+	background: #E7A32D url(../images/img01.gif) repeat-x top left;
+	border-top: solid 1px #FFDF69;
+	border-bottom: solid 1px #DD9923;
+	padding: 12px;
+	font-size: 16px;
+	text-transform: uppercase;
+	list-style: none;
+	color: #FFF;
+	text-shadow: 0px 1px 2px rgba(0,0,0,0.6);
+}
+
+.dropotron li {
+	padding: 10px 12px 10px 12px;
+	position: relative;
+	margin-top: 1px;
+}
+
+.dropotron li:hover {
+	background: #AF7A1D;
+	border-top: solid 1px #7C5612;
+	margin-top: 0;
+}
+
+.dropotron li .right-arrow {
+	margin: 0 0 0 0.5em;
+	position: absolute;
+	right: 13px;
+	top: 20px;
+	width: 0;
+	height: 0;
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent;
+	border-left: 7px solid #AF7A1D;
+}
+
+.dropotron li:hover > .right-arrow {
+	border-left: 7px solid #6F4A00;
+}
+
+.dropotron a {
+	color: #FFF;
+	text-decoration: none;
+}
+.compulsary
+{
+    color:red;
+    
+}
+.LV_invalid {
+    color:#CC0000;
+	font-size:13px;
+}
+ .login_button
+ {
+  height:50px;
+  width:120px;
+  margin-top: 20px;
+  }
+@font-face {
+		font-family: 'saral';
+		font-weight: normal;
+		font-style: normal;
+		src: url('g-saral1.ttf');
+}
+h1 {
+    font-family: 'saral', serif;
+}
+.mytext
+{
+	font-family: 'saral', serif;
+        font-size:25px;
+}
+.myField
+{
+	font-family: 'saral', serif;
+        font-size:20px;
+}
+.mydata
+{
+    /*font-family: 'saral', serif;*/
+    font-size:20px;
+ 
+}
+.myheader
+{
+    font-family: 'saral', serif;
+   background-color:teal;
+    color:white;
+    font-size:20px;
+}
