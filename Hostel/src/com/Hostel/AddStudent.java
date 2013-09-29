@@ -32,7 +32,7 @@ public class AddStudent extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            String name,motname,fatname,cast,subcast,region,nationality,dob,address,fatbus,motnamebus,stutel,stumonb,sturel,stureltel,sturelmob,stuschool,sturesult,stuelergy,stuextra;
+            String name,motname,fatname,cast,subcast,region,nationality,dob,address,fatbus,motnamebus,stutel,stumonb,sturel,stureltel,sturelmob,stuschool,sturesult,stuelergy,stuextra,lan;
             int std,year;
             String next=null;
             String stuid;
@@ -58,7 +58,8 @@ public class AddStudent extends HttpServlet {
             sturesult=request.getParameter("stuResult");
             stuelergy=request.getParameter("stuelergy");
             stuextra=request.getParameter("stuExtra");
-           
+            lan = request.getParameter("language");
+           System.out.println("Lan:"+lan);
             String Path=getServletContext().getRealPath("/")+"/images/NoPhotoAvailable.jpg";
             /*String Path2=getServletContext().getRealPath("/")+"/images/blank_2.jpg";
             String Path3=getServletContext().getRealPath("/")+"/images/blank_3.jpg";*/
@@ -141,7 +142,7 @@ public class AddStudent extends HttpServlet {
             
             stuid= name+std+dob;
                int toYear=year;
-            String query="insert into student(name,stuid,std,Fromyear,toYear,mother,father,stucast,subcast,region,nationality,dob,address,fatherbus,motwork,stutel,stumob,sturel,stutele,sturelmob,stuschool,sturesult,stuelergy,stuextra) values ('"+name+"','"+stuid+"',"+std+","+year+","+toYear+",'"+motname+"','"+fatname+"','"+cast+"','"+subcast+"','"+region+"','"+nationality+"','"+dob+"','"+address+"','"+fatbus+"','"+motnamebus+"','"+stutel+"','"+stumonb+"','"+sturel+"','"+stureltel+"','"+sturelmob+"','"+stuschool+"','"+sturesult+"','"+stuelergy+"','"+stuextra+"')";
+            String query="insert into student(name,stuid,std,Fromyear,toYear,mother,father,stucast,subcast,region,nationality,dob,address,fatherbus,motwork,stutel,stumob,sturel,stutele,sturelmob,stuschool,sturesult,stuelergy,stuextra,lan) values ('"+name+"','"+stuid+"',"+std+","+year+","+toYear+",'"+motname+"','"+fatname+"','"+cast+"','"+subcast+"','"+region+"','"+nationality+"','"+dob+"','"+address+"','"+fatbus+"','"+motnamebus+"','"+stutel+"','"+stumonb+"','"+sturel+"','"+stureltel+"','"+sturelmob+"','"+stuschool+"','"+sturesult+"','"+stuelergy+"','"+stuextra+"','"+lan+"')";
             String yearQuery="insert into studentyear values('"+stuid+"','"+year+"')";
             String query1="insert into StudentPhotoPath values ('"+stuid+"','"+Path+"','student')";
             String query2="insert into StudentPhotoPath values ('"+stuid+"','"+Path+"','Mother')";
@@ -160,7 +161,7 @@ public class AddStudent extends HttpServlet {
             }
             else
             {
-                    next="HostelHome.jsp?msg=Try Again";
+                    next="HostelHome.jsp?msg=Try Again&ln=en";
             }
             response.sendRedirect(next);
 

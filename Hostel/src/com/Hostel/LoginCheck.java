@@ -63,7 +63,7 @@ public class LoginCheck extends HttpServlet {
 
             if(count>0)
             {
-                next="HostelHome.jsp";
+                next="HostelHome.jsp?ln=en";
             }
             else
             {

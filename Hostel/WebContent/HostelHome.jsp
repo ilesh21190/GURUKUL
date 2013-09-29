@@ -4,6 +4,8 @@
     Author     : Ilesh
 --%>
 
+<%@page import="java.util.ResourceBundle,java.util.*"%>
+<%@page import="java.util.Locale"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,271 +16,272 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>WELCOME TO Shree Swaminarayan Hostel </title>
-<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type="text/css"/>
+<title>WELCOME TO Shree Swaminarayan Hostel</title>
 <link href="CSS/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="JS/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="JS/jquery.dropotron-1.0.js"></script>
-		<script type="text/javascript">
-			$(function() {
-				$('#menu > ul').dropotron({
-					alignment: 'center',
-					mode: 'fade',
-					offsetY: -13
-				});
-			});
-		</script>
-                 <script type="text/javascript">
-                    $(document).ready(function()
-                    {
-
-
-                           jQuery("#msg").hide();
-                    });
-                    </script>
-       <% if (request.getParameter("msg")!=null){%>
+<script type="text/javascript" src="JS/jquery.dropotron-1.0.js"></script>
 <script type="text/javascript">
-  $(document).ready(function(){
+	$(function() {
+		$('#menu > ul').dropotron({
+			alignment : 'center',
+			mode : 'fade',
+			offsetY : -13
+		});
+	});
+</script>
+<%String ln = request.getParameter("ln"); %>
+<script type="text/javascript">
+	$(document).ready(function() {
 
+		jQuery("#msg").hide();
+		var ln1 = "<%=ln%>";
+		<%-- $("#language option:contains('<%=ln%>')").attr('selected', 'selected'); --%>
+		$('#language').val(ln1).attr("selected", "selected");
+		$( "#language").change(function() {
+			 
+				var ln = $( "select option:selected" ).val();
+				window.location.href="/Hostel/HostelHome.jsp?ln="+ln;
+		});
+});
+	
+</script>
+<%
+	if (request.getParameter("msg") != null) {
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
 
-   $("#msg").show();
-   });
-   </script>
-<%}%>
+		$("#msg").show();
+		
+	});
+	
+	</script>
+<%
+	}
+%>
 
-                
+<% 
+Locale l = new Locale(ln);
+ResourceBundle rb = ResourceBundle.getBundle("ApplicationResource", l);
+%>
+<%
+	if (ln.equals("guj")) {
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".I18Nmsg").addClass("mytext");
+		$(".I18NField").addClass("myField");
+	});
+</script>
+<%
+	}
+	else
+	{
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".I18Nmsg").addClass("myEngtext");
+		$(".I18NField").removeClass("myField");
+	});
+</script>
+<%} %>
+
 </head>
 <body>
 
-<div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
-			
+	<div id="wrapper">
+		<div id="header-wrapper">
+			<div id="header">
 
-                            <div id="logo">
-				<h1>7I Svaimnaray` Skul-gurukul hoS3el</h1>
-                                <h1 class="mytext">sek3r-rr,ga>2Ingr </h1>
+
+				<div id="logo">
+				<!-- <h1>7I Svaimnaray` Skul-gurukul hoS3el</h1> -->
+				<h1 class="I18Nmsg"><%=rb.getString("PageHeader.message") %></h1>
+					<!--  <h1 class="I18Nmsg">sek3r-rr,ga>2Ingr</h1> --> 
+					<h1 class="I18Nmsg"><%=rb.getString("PageHeader.Adderess") %></h1>
+				</div>
+
+
 			</div>
-
-			
 		</div>
+
+
+
+		<!-- end #header -->
+		<jsp:include page="Hostel_Header.jsp"></jsp:include>
+		<!-- end #menu -->
+		<div id="page">
+			<div id="page-bgtop">
+				<div id="page-bgbtm">
+					<div id="page-content">
+						<div id="content">
+							<select name= "lan" id="language">
+								<option value="en">English</option>
+								<option value="guj">Gujarati</option>
+							</select>
+							<div class="post">
+								<center class="I18Nmsg"><%=rb.getString("PageHeader.message") %></center>
+								<center>
+									<label class="I18Nmsg"><%=rb.getString("PageHeader.phone") %></label><label>(079)23245821,23221765</label>
+								</center>
+								<form name="registration" action="AddStudent" method="post">
+									<br /> <br />
+									<center>
+										<p id="msg" style="color: red; font-size: 20px">Insert
+											Successfully...</p>
+									</center>
+									<table width="100%">
+											
+										<tr>
+											<td width="500px"><label class="I18Nmsg"><%=rb.getString("Student.name") %></label></td>
+											<td><input type="text" name="stuname" class="I18NField"
+												size="70" required /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("Student.std") %></label></td>
+											<td><select name="stustd" class="I18Nmsg" required>
+													<option value="1"><%=rb.getString("std.first") %></option>
+													<option value="2"><%=rb.getString("std.second") %></option>
+													<option value="3"><%=rb.getString("std.third") %></option>
+													<option value="4"><%=rb.getString("std.four") %></option>
+													<option value="5"><%=rb.getString("std.five") %></option>
+													<option value="6"><%=rb.getString("std.six") %></option>
+													<option value="7"><%=rb.getString("std.seven") %></option>
+													<option value="8"><%=rb.getString("std.eight") %></option>
+													<option value="9"><%=rb.getString("std.nine") %></option>
+													<option value="10"><%=rb.getString("std.ten") %></option>
+													<option value="11"><%=rb.getString("std.eleven") %></option>
+													<option value="12"><%=rb.getString("std.twelve") %></option>
+											</select> &nbsp;&nbsp;&nbsp; <label class="I18Nmsg"><%=rb.getString("stu.year")%></label>
+												<input type="text" name="stuyear" class="" required /></td>
+
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.mother") %></label></td>
+											<td><input type="text" class="I18NField" name="stumother"
+												size="70" required></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.father") %></label></td>
+											<td><input type="text" class="I18NField" name="stufather"
+												size="70" required /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.cast") %></label></td>
+											<td><input type="text" class="I18NField" name="stucast" />
+												<label class="I18Nmsg"><%=rb.getString("stu.subcast") %></label> <input
+												type="text" class="I18NField" name="stusubcast" /></td>
+
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.region") %></label></td>
+											<td><input type="text" class="I18NField" name="sturegion" />
+
+
+												<label class="I18Nmsg"><%=rb.getString("stu.nationality") %></label> <input
+												type="text" class="I18NField" name="stunationality" /></td>
+
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.birthday") %></label></td>
+											<td><input type="date" name="studob" required /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.address") %></label></td>
+											<td><textarea class="I18NField" name="stuadd" cols="50"
+													rows="5"></textarea></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.fatherbusiness") %></label></td>
+											<td><input type="text" name="stufatbus" class="I18NField"
+												size="70" /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.motherbusiness") %></label></td>
+											<td><input type="text" name="stumotbus" class="I18NField"
+												size="70" /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.phone") %></label></td>
+											<td><input type="text" name="stutele" size="25" /> <label
+												class="I18Nmsg"><%=rb.getString("stu.mo") %></label> <input
+												type="text" name="stumo" size="20" required /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.relative") %></label></td>
+											<td><input type="text" class="I18NField" size="70"
+												name="sturel" /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.relativephone") %></label></td>
+											<td><input type="text" name="stureltel" size="25" /> <label
+												class="I18Nmsg"><%=rb.getString("stu.relativemo") %></label> 
+												<input type="text" name="sturelmo" size="20" /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.lastschool") %></label></td>
+											<td><input type="text" class="I18NField" size="70"
+												name="stuschool" /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.lastresult") %></label></td>
+											<td><input type="text" name="stuResult" /></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.elergy") %></label></td>
+											<td><textarea name="stuelergy" class="I18NField" rows="3"
+													cols="50"></textarea></td>
+										</tr>
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.activity") %> </label></td>
+											<td><textarea name="stuExtra" class="I18NField" rows="3"
+													cols="50"></textarea></td>
+										</tr>
+										<tr>
+											<td>
+											<input type="hidden" value="<%=ln%>" name = "language"/>
+											</td>
+										</tr>
+	
+										<tr>
+											<td></td>
+										</tr>
+	
+										<tr>
+											<td><label class="I18Nmsg"><%=rb.getString("stu.sign") %> </label>........................</td>
+											<%Date d= new Date(); %>
+											<td><label class="I18Nmsg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rb.getString("reg.date") %></label><%=d.toLocaleString()%></td>
+										</tr>	
+										<tr>
+											<td></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td><input type="submit" value="Register"
+												class="login_button" /> <input type="Reset" value="Reset"
+												class="login_button" /></td>
+										</tr>
+									</table>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end #page -->
 	</div>
-
-
-
-	<!-- end #header -->
-        <jsp:include page="Hostel_Header.jsp"></jsp:include>
-	<!-- end #menu -->
-<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
-				<div id="page-content">
-					<div id="content">
-						<div class="post">
-                                                    <center class="mytext"> 7I Svaimnaray` Skul-gurukul hoS3el</center>
-                                                    <center><label class="mytext">sek3r-rr,ga>2Ingr fon:</label><label>(079)23245821,23221765</label></center>
-                                                    <form name="registration" action="AddStudent" method="post">
-                                                        <br/>
-                                                        <br/>
-                                                        <center><p id="msg" style="color:red;font-size:20px">Insert Successfully...</p></center>
-                                                        <table width="100%">
-                                                            
-                                                            <tr>
-                                                                <td width="500px">
-                                                                    <label class="mytext">&#xc9;.iv&#xb7;a4IRnu> pu&#xbd; nam::</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="stuname" class="myField" size="70" required/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xca;. 2or`:</label>
-                                                                </td>
-                                                                <td>
-                                                                    <select name="stustd" class="mytext"  required>
-                                                                        <option value="1">&#xc9;</option>
-                                                                        <option value="2">&#xca;</option>
-                                                                        <option value="3">&#xcb;</option>
-                                                                        <option value="4">&#xcc;</option>
-                                                                        <option value="5">&#xcd;</option>
-                                                                        <option value="6">&#xce;</option>
-                                                                        <option value="7">&#xcf;</option>
-                                                                        <option value="8">&#xd0;</option>
-                                                                        <option value="9">&#xd1;</option>
-                                                                        <option value="10">&#xc9;&#xc8;</option>
-                                                                        <option value="11">&#xc9;&#xc9;</option>
-                                                                        <option value="12">&#xc9;&#xca;</option>
-                                                                    </select>
-                                                                    &nbsp;&nbsp;&nbsp;
-                                                                    <label class="mytext">&#x76;&#x38;&#x52;:</label>
-                                                                    <input type="text" name="stuyear" class=""  required/>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xcb;. matanu nam:</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="myField" name="stumother" size="70"  required>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xcc;. iptanu nam</label>
-
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="myField" name="stufather" size="70"  required/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xcd;. &#x29;atI</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="myField" name="stucast"/>
-                                                                    <label class="mytext">&#xce;. pe3a &#x29;atI</label>
-                                                                    <input type="text" class="myField" name="stusubcast"/>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xcd;. 2mR</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="myField" name="sturegion"/>
-                                                                
-                                                                
-                                                                    <label class="mytext">&#xcf;. rai*&#xa7;yta</label>
-                                                                    <input type="text" class="myField" name="stunationality"/>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xd0;. jNm tarIq</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="date" name="studob"  required/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xd1;. srnamu></label>
-                                                                </td>
-                                                                <td>
-                                                                    <textarea class="myField" name="stuadd" cols="50" rows="5"></textarea>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xd1;. iptano Vvsay</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="stufatbus" class="myField" size="70"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xd2;. matanu kam</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="stumotbus" class="myField" size="70"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xc9;.  3elIfon n>br&#xdc; koD sa4e&#xdd;</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="stutele" size="25" />
-                                                                    <label class="mytext".>&#xc9;&#xca;.&#xdc;mo&#xdd;</label>
-                                                                    <input type="text"  name="stumo" size="25"  required/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xcb;. S4aink s>b>2Inu> nam Ane s>b>2</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="myField" size="70" name="sturel"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xcc;.  3elIfon n>br&#xdc; koD sa4e&#xdd;</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" name="stureltel" size="25" />
-                                                                    <label class="mytext">&#xc9;&#xcd;.&#xdc;mo&#xdd;</label>
-                                                                    <input type="text"  name="sturelmo" size="25"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xcf;. 0eLle k[ xa%aa ma AWyas kyoR</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="myField" size="70" name="stuschool"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xd0;. gya v*aRnI prI(aanu prI`am</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text"  name="stuResult"/>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xc9;&#xd1;. ba%ak ne ko[p` p/kar nI ibmarI ke Ael+R 0e. hoy to ivgt Aapo.</label>
-                                                                </td>
-                                                                <td>
-                                                                    <textarea name="stuelergy" class="myField" rows="3" cols="50"></textarea>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="mytext">&#xca;&#xd2;. ivxe8 p/v&lt;it</label>
-                                                                </td>
-                                                                <td>
-                                                                    <textarea name="stuExtra" class="myField" rows="3" cols="50"></textarea>
-                                                                </td>
-                                                            </tr>
-                                                            
-                                                            <tr>
-                                                                <td>
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    
-                                                                </td>
-                                                                <td>
-                                                                    <input type="submit" value="Register" class="login_button"/>
-                                                                    <input type="Reset" value="Reset" class="login_button"/>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </form>
-                                                    
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </div>	<!-- end #page -->
-</div>	<!-- end #page -->
-</div>
-<div id="footer">
-	<p>Copyright (c) 2012 Sitename.com. All rights reserved by Shree Swaminarayan Hostel.</p>
-</div>
-<!-- end #footer -->
+	<!-- end #page -->
+	</div>
+	<div id="footer">
+		<p>Copyright (c) 2012 Sitename.com. All rights reserved by Shree
+			Swaminarayan Hostel.</p>
+	</div>
+	<!-- end #footer -->
 </body>
 </html>

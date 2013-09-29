@@ -15,8 +15,6 @@
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>WELCOME TO Shree Swaminarayan Gurukul </title>
-<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type="text/css"/>
 <link href="CSS/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="JS/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="JS/jquery.dropotron-1.0.js"></script>

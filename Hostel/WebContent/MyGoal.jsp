@@ -11,8 +11,6 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="webcam.js"></script>
         <script type="text/javascript" src="jquery.js"></script>
-        <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
-        <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type="text/css"/>
         <link href="CSS/style.css" rel="stylesheet" type="text/css" media="screen" />
         <link href="CSS/login.css" rel="stylesheet" type="text/css" media="screen" />
         <%

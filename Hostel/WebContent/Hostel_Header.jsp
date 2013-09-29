@@ -13,7 +13,7 @@
                 <div id="menu">
 				<ul>
 					<li class="first">
-						<a href="HostelHome.jsp">Home</a>
+						<a href="HostelHome.jsp?ln=en">Home</a>
                                         </li>
 
                                          <li class="first" id="HOD">
