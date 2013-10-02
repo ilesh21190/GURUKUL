@@ -32,6 +32,7 @@ public class UpdateStudent extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+        	String lan= request.getParameter("lan");
             String name,motname,fatname,cast,subcast,region,nationality,dob,address,fatbus,motnamebus,stutel,stumonb,sturel,stureltel,sturelmob,stuschool,sturesult,stuelergy,stuextra;
             int std,year;
             String next=null;
@@ -153,11 +154,11 @@ public class UpdateStudent extends HttpServlet {
             if(i>0)
             {
                // next="HostelHome.jsp?msg=Insert Successfully";
-                next="AllStudent.jsp?id="+stuid;
+                next="AllStudent.jsp?id="+stuid+"&ln="+lan;
             }
             else
             {
-                    next="AllStudent.jsp?msg=Try Again";
+                    next="AllStudent.jsp?msg=Try Again &ln="+lan;
             }
             response.sendRedirect(next);
 

@@ -40,7 +40,7 @@
 	});
 </script>
 <%
-	String ln = request.getParameter("ln");
+	String ln = request.getParameter("lan");
 	String by = request.getParameter("search");
 	int value = Integer.parseInt(request.getParameter("searchof"));
 %>
@@ -55,9 +55,9 @@
 		$('#language').val(ln1).attr("selected", "selected");
 		$( "#language").change(function() {
 				 
-				var ln = $( "select option:selected" ).val();
+				var ln1 = $( "select option:selected" ).val();
 				
-				window.location.href="/Hostel/Forward.jsp?ln="+ln1+"&search=<%=by%>&searchof=<%=value%>";
+				window.location.href="/Hostel/Forward.jsp?lan="+ln1+"&search=<%=by%>&searchof=<%=value%>";
 		});
 });
 	
@@ -157,7 +157,7 @@
 												<td>&nbsp;&nbsp;&nbsp;</td>
 												<td><input type="text" name="searchof" required /></td>
 												<td><input type="submit" value="<%=rb.getString("search.button")%>" class="I18Nmsg" />
-												<input type="hidden" name="ln" value="<%=ln%>"/>
+												<input type="hidden" name="lan" value="<%=ln%>"/>
 												</td>
 											</tr>
 										</table>
@@ -169,15 +169,15 @@
 									System.out.println(by + ":" + value);
 									String query = null;
 									if (by.equals("std")) {
-										query = "select stuid,MIN(name),MAX(std),MIN(dob),max(nextyear) from student,studentyear  where "
+										query = "select stuid,MIN(name),MAX(std),MIN(dob),max(nextyear),lan from student,studentyear  where "
 												+ by
 												+ "="
 												+ value
-												+ " and status='Active' and student.stuid=studentyear.studentid group by stuid";
+												+ " and status='Active' and student.stuid=studentyear.studentid group by stuid,lan";
 										System.out.println(query);
 									} else {
-										query = "select stuid,MIN(name),MAX(std),MIN(dob),max(nextyear) from student s,studentyear sy where s.stuid=sy.studentid and sy.nextyear="
-												+ value + " and s.status='Active' group by stuid";
+										query = "select stuid,MIN(name),MAX(std),MIN(dob),max(nextyear),lan from student s,studentyear sy where s.stuid=sy.studentid and sy.nextyear="
+												+ value + " and s.status='Active' group by stuid,lan";
 										System.out.println(query);
 									}
 									System.out.println(query);
@@ -196,36 +196,68 @@
 								<form name="forward" action="UpdateYear.jsp" method="post">
 									`
 									<table width="100%" border="1">
-										<tr class="myheader">
+										<tr class="I18NHeader">
 											<th></th>
-											<th><label>iv&#xb7;a4IRnu> pu&#xbd; nam</label></th>
-											<th><label> 2or`</label></th>
-
-											<th><label>jNm tarIq</label></th>
-											<th><label>juAo</label></th>
-											<th><label>su2aro</label></th>
-											<th><label>DIlI3</label></th>
+											<label class="I18Nmsg"><%=rb.getString("All.name")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.std")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.std")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.year")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.date")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.view")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.edit")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.delete")%></label></th>
 
 										</tr>
 										<%
 											rs.beforeFirst();
+											int i=0;
 												while (rs.next()) {
-													System.out.println("Inside if");
-										%>
+											         i++;
+                                                     if(rs.getString("lan").equals("guj"))
+                                                     {
+                                                   %>
+																<script type="text/javascript">
+																		$(document).ready(function() {
+																			
+																			$(".I18Nview<%=i%>").addClass("mytext");
+																			
+																		});
+																	</script>
+																<% }
+																		else
+																		{
+																	%>
+																<script type="text/javascript">
+																		$(document).ready(function() {
+																			
+																			$(".I18Nview<%=i%>").addClass("myEngtext");
+																			
+																		});
+																	</script>
+
+																		<%} %>
+
+
+										
 										<tr>
 											<td><input type="checkbox" name="checkme"
 												value="<%=rs.getString(1)%>" /></td>
-											<td><label class="mytext"><%=rs.getString(2)%></label></td>
+											<td><label class="I18Nview<%=i%>"><%=rs.getString(2)%></label></td>
 											<td><label><%=rs.getInt(3)%></label></td>
 											<td><%=rs.getString(4)%></td>
 											<td><label><%=rs.getInt(5)%></label></td>
 
-											<td><a href="ViewStudent.jsp?id=<%=rs.getString(1)%>">View</a>
-											</td>
-											<td><a href="EditStudent.jsp?id=<%=rs.getString(1)%>">Edit</a>
-											</td>
-											<td><a href="DeleteStudent?id=<%=rs.getString(1)%>">Delete</a>
-											</td>
+											 <td><a
+											href="ViewStudent.jsp?id=<%=rs.getString(1)%>&lan=<%=rs.getString("lan")%>">View</a>
+										</td>
+										<td><a
+											href="EditStudent.jsp?id=<%=rs.getString(1)%>&lan=<%=rs.getString("lan")%>">Edit</a>
+										</td>
+										<td><a
+											href="DeleteStudent?id=<%=rs.getString(1)%>&lan=<%=rs.getString("lan")%>">Delete</a>
+										</td>
+                                                        </tr>
+
 										</tr>
 
 										<%

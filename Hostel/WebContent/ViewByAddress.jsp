@@ -4,7 +4,7 @@
     Author     : Ilesh
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" import="com.Hostel.*,java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="com.Hostel.*,java.sql.*,java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 <% if(session.getAttribute("login")==null)
@@ -40,6 +40,52 @@
                            jQuery("#delete").hide();
                     });
                     </script>
+                    <%String ln = request.getParameter("ln"); %>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		jQuery("#msg").hide();
+		var ln1 = "<%=ln%>";
+		<%-- $("#language option:contains('<%=ln%>')").attr('selected', 'selected'); --%>
+		$('#language').val(ln1).attr("selected", "selected");
+		$( "#language").change(function() {
+			 
+				var lan = $( "select option:selected" ).val();
+				window.location.href="/Hostel/AllStudent.jsp?ln="+lan;
+				
+		});
+});
+	
+</script>
+
+<% 
+Locale l = new Locale(ln);
+ResourceBundle rb = ResourceBundle.getBundle("ApplicationResource", l);
+%>
+<%
+	if (ln.equals("guj")) {
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".I18Nmsg").addClass("mytext");
+		$(".I18NField").addClass("myField");
+	});
+</script>
+<%
+	}
+	else
+	{
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".I18Nmsg").addClass("myEngtext");
+		$(".I18NField").removeClass("myField");
+	});
+</script>
+<%} %>
+                    
        <% if (request.getParameter("delete")!=null){%>
 <script type="text/javascript">
   $(document).ready(function(){
@@ -58,8 +104,9 @@
 	<div id="header-wrapper">
 		<div id="header">
 			<div id="logo">
-				<h1>7I Svaimnaray` Skul-gurukul hoS3el</h1>
-                                <h1 class="mytext">sek3r-rr,ga>2Ingr </h1>
+				<h1 class="I18Nmsg"><%=rb.getString("PageHeader.message") %></h1>
+					<!--  <h1 class="I18Nmsg">sek3r-rr,ga>2Ingr</h1> --> 
+					<h1 class="I18Nmsg"><%=rb.getString("PageHeader.Adderess") %></h1>
 
 			</div>
 		</div>
@@ -75,33 +122,62 @@
 			<div id="page-bgbtm">
 				<div id="page-content">
 					<div id="content">
+					<select name="lan" id="language">
+								<option value="en">English</option>
+								<option value="guj">Gujarati</option>
+							</select>
+					
 						<div class="post">
                                                     <center><p id="delete" style="color:red;font-size:20px">Delete Successfully...</p></center>
                                                     <table width="100%" border="1">
-                                                        <tr class="myheader">
-                                                            <th><label>iv&#xb7;a4IRnu> pu&#xbd; nam</label></th>
-                                                            <th><label > 2or`</label></th>
-                                                            <th><label >v&#x38;&#x52;</label></th>
-                                                            <th><label >srnamu</label></th>
-                                                            <th><label>jovo</label></th>
-                                                            <th><label>su2aro</label></th>
-                                                            <th><label>DIlI3</label></th>
-
+                                                        <tr class="I18NHeader">
+                                                        	<th><label class="I18Nmsg"><%=rb.getString("All.name")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.std")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.year")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.address")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.view")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.edit")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.delete")%></label></th>
+                                                            
                                                         </tr>
 
                                                     <%
                                                         HostelDatabase hd=new HostelDatabase();
-                                                        String query="select id,name,std,Fromyear,address from student where status='Active' order by std ";
+                                                        String query="select stuid,name,std,Fromyear,address,lan from student where status='Active' order by std ";
                                                         int i=3;
                                                         ResultSet rs=hd.getQueryResult(query);
                                                             while(rs.next())
                                                                 {
-                                                                  System.out.println("i:"+i);
-                                                                %>
+                                                                i++;
+                                                                if(rs.getString("lan").equals("guj"))
+                                                                {
+                                                              %>
+																		<script type="text/javascript">
+																				$(document).ready(function() {
+																					
+																					$(".I18Nview<%=i%>").addClass("mytext");
+																					
+																				});
+																			</script>
+																		<% }
+																				else
+																				{
+																			%>
+																		<script type="text/javascript">
+																				$(document).ready(function() {
+																					
+																					$(".I18Nview<%=i%>").addClass("myEngtext");
+																					
+																				});
+																			</script>
+
+																				<%} %>
+
+                                                               
 
                                                           <tr>
                                                             <td>
-                                                                <label class="mytext"><%=rs.getString(2)%></label>
+                                                                <label class="I18Nview<%=i%>"><%=rs.getString(2)%></label>
                                                             </td>
                                                             <td>
                                                                 <label><%=rs.getInt(3)%></label>
@@ -110,17 +186,17 @@
                                                                 <%=rs.getInt(4)%>
                                                             </td>
                                                             <td>
-                                                                <label class="mytext">  <%=rs.getString(5)%></label>
+                                                                <label class="I18Nview<%=i%>">  <%=rs.getString(5)%></label>
                                                             </td>
-                                                            <td>
-                                                                <a href="ViewStudent.jsp?id=<%=rs.getInt(1)%>">View</a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="EditStudent.jsp?id=<%=rs.getInt(1)%>">Edit</a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="DeleteStudent?id=<%=rs.getInt(1)%>">Delete</a>
-                                                            </td>
+                                                            <td><a
+											href="ViewStudent.jsp?id=<%=rs.getString(1)%>&lan=<%=rs.getString("lan")%>">View</a>
+										</td>
+										<td><a
+											href="EditStudent.jsp?id=<%=rs.getString(1)%>&lan=<%=rs.getString("lan")%>">Edit</a>
+										</td>
+										<td><a
+											href="DeleteStudent?id=<%=rs.getString(1)%>&lan=<%=rs.getString("lan")%>">Delete</a>
+										</td>
                                                         </tr>
 
                                                             <%

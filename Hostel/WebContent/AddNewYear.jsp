@@ -164,7 +164,7 @@
 								</center>
 								<fieldset>
 									<legend class="I18Nmsg"><%=rb.getString("search.label")%></legend>
-									<form name="searchme" action="Forward.jsp">
+									<form name="searchme" action="Forward.jsp?ln="+ln>
 										<table>
 											<tr>
 												<td><input type="radio" name="search" value="std"
@@ -172,9 +172,9 @@
 													type="radio" name="search" value="year" required /><label
 													class="I18Nmsg"><%=rb.getString("search.year")%></label></td>
 												<td>&nbsp;&nbsp;&nbsp;</td>
-												<td><input type="text" name="searchof" required /></td>
+												<td><input type="text" name="searchof" class="I18NField" required /></td>
 												<td><input type="submit" value="<%=rb.getString("search.button")%>" class="I18Nmsg" />
-												<input type="hidden" name="ln" value="<%=ln%>"/>
+												<input type="hidden" name="lan" value="<%=ln%>"/>
 												</td>
 											</tr>
 										</table>

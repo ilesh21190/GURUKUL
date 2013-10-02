@@ -33,17 +33,18 @@ public class DeleteStudent extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String id=request.getParameter("id");
+            String lan=request.getParameter("lan");
             String next="";
             HostelDatabase hd=new HostelDatabase();
             String query="update student set status='Deactive' where stuid='"+id+"'";
             int i=hd.insertStatement(query);
             if(i>0)
             {
-                next="AllStudent.jsp?delete=yes";
+                next="AllStudent.jsp?delete=yes&ln="+lan;
             }
             else
             {
-                next="AllStudent.jsp?delete=no";
+                next="AllStudent.jsp?delete=no&ln="+lan;
             }
             response.sendRedirect(next);
         } finally { 

@@ -65,7 +65,7 @@
 
 
                             <div id="logo">
-				<h1>7I Svaimnaray` Skul-gurukul hoS3el</h1>
+				<h1 class="mytext">7I Svaimnaray` Skul-gurukul hoS3el</h1>
                                 <h1 class="mytext">sek3r-rr,ga>2Ingr </h1>
 			</div>
 

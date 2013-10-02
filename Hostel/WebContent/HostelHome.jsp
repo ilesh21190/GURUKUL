@@ -211,8 +211,8 @@ ResourceBundle rb = ResourceBundle.getBundle("ApplicationResource", l);
 										</tr>
 										<tr>
 											<td><label class="I18Nmsg"><%=rb.getString("stu.phone") %></label></td>
-											<td><input type="text" name="stutele" size="25" /> <label
-												class="I18Nmsg"><%=rb.getString("stu.mo") %></label> <input
+											<td><input type="text" name="stutele" size="25" /> 
+											<label class="I18Nmsg"><%=rb.getString("stu.mo") %></label> <input
 												type="text" name="stumo" size="20" required /></td>
 										</tr>
 										<tr>

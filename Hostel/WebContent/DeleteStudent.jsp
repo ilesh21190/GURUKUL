@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"
-	import="com.Hostel.*,java.sql.*"%>
+	import="com.Hostel.*,java.sql.*,java.util.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -50,6 +50,53 @@ function SelectAll()
 		});
 	});
 </script>
+<%String ln = request.getParameter("ln"); %>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		jQuery("#msg").hide();
+		var ln1 = "<%=ln%>";
+		<%-- $("#language option:contains('<%=ln%>')").attr('selected', 'selected'); --%>
+		$('#language').val(ln1).attr("selected", "selected");
+		$( "#language").change(function() {
+			 
+				var lan = $( "select option:selected" ).val();
+				window.location.href="/Hostel/DeleteStudent.jsp?ln="+lan;
+				
+		});
+});
+	
+</script>
+
+<% 
+Locale l = new Locale(ln);
+ResourceBundle rb = ResourceBundle.getBundle("ApplicationResource", l);
+%>
+<%
+	if (ln.equals("guj")) {
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".I18Nmsg").addClass("mytext");
+		$(".I18NField").addClass("myField");
+	});
+</script>
+<%
+	}
+	else
+	{
+%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".I18Nmsg").addClass("myEngtext");
+		$(".I18NField").removeClass("myField");
+	});
+</script>
+<%} %>
+
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -78,8 +125,9 @@ function SelectAll()
 		<div id="header-wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1>7I Svaimnaray` Skul-gurukul hoS3el</h1>
-					<h1 class="mytext">sek3r-rr,ga>2Ingr</h1>
+					<h1 class="I18Nmsg"><%=rb.getString("PageHeader.message") %></h1>
+					<!--  <h1 class="I18Nmsg">sek3r-rr,ga>2Ingr</h1> --> 
+					<h1 class="I18Nmsg"><%=rb.getString("PageHeader.Adderess") %></h1>
 
 				</div>
 			</div>
@@ -95,6 +143,11 @@ function SelectAll()
 				<div id="page-bgbtm">
 					<div id="page-content">
 						<div id="content">
+						<select name="lan" id="language">
+								<option value="en">English</option>
+								<option value="guj">Gujarati</option>
+							</select>
+						
 							<div class="post">
 							<%int i = 0; %>
 								<center>
@@ -103,33 +156,57 @@ function SelectAll()
 								</center>
 								<form action="/Hostel/DeleteSelected" method="post">
 									<table width="100%" border="1">
-										<tr class="myheader">
+										<tr class="I18NHeader">
 											<th align="left"><label><input type="checkbox" name="selectAll" id="main" onChange="SelectAll()" id="c1"/></label></th>
-											<th><label>iv&#xb7;a4IRnu> pu&#xbd; nam</label></th>
-											<th><label> 2or`</label></th>
-											<th><label>v&#x38;&#x52;</label></th>
-											<th><label>srnamu</label></th>
-
+											<th><label class="I18Nmsg"><%=rb.getString("All.name")%></label></th>
+											
+																<th><label class="I18Nmsg"><%=rb.getString("All.std")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.year")%></label></th>
+																<th><label class="I18Nmsg"><%=rb.getString("All.address")%></label></th>
+																
+																
 										</tr>
 										
 										<%
 											HostelDatabase hd = new HostelDatabase();
-											String query = "select id,name,std,Fromyear,address,stuid from student where status='Active' order by std ";
+											String query = "select id,name,std,Fromyear,address,stuid,lan from student where status='Active' order by std ";
 											
 											ResultSet rs = hd.getQueryResult(query);
 											while (rs.next()) {
 
-												i++;
-												
-										%>
+                                                i++;
+                                                if(rs.getString("lan").equals("guj"))
+                                                {
+                                              %>
+														<script type="text/javascript">
+																$(document).ready(function() {
+																	
+																	$(".I18Nview<%=i%>").addClass("mytext");
+																	
+																});
+															</script>
+														<% }
+																else
+																{
+															%>
+														<script type="text/javascript">
+																$(document).ready(function() {
+																	
+																	$(".I18Nview<%=i%>").addClass("myEngtext");
+																	
+																});
+															</script>
+
+																<%} %>
+										
 
 										<tr>
 											<td><input type="checkbox" name="delete"
 												value="<%=rs.getString("stuid") %>"  class="select"/></td>
-											<td><label class="mytext"><%=rs.getString(2)%></label></td>
+											<td><label class="I18Nview<%=i%>"><%=rs.getString(2)%></label></td>
 											<td><label><%=rs.getInt(3)%></label></td>
 											<td><%=rs.getInt(4)%></td>
-											<td><label class="mytext"> <%=rs.getString(5)%></label>
+											<td><label class="I18Nview<%=i%>"> <%=rs.getString(5)%></label>
 											</td>
 
 										</tr>

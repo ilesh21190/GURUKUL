@@ -17,7 +17,7 @@
                                         </li>
 
                                          <li class="first" id="HOD">
-						<a href="SearchStudent.jsp">Search Student</a>
+						<a href="SearchStudent.jsp?ln=en">Search Student</a>
 						
 					</li>
               <!--=====================================================================================-->
@@ -25,8 +25,8 @@
 						Manage Student
                                                 <span class="down-arrow"></span>
                                                     <ul>
-                                                    		<li><a href="EditStudent.jsp">Edit student</a></li>
-                                                                <li><a href="DeleteStudent.jsp">Delete Student</a></li>
+                                                    		
+                                                                <li><a href="DeleteStudent.jsp?ln=en">Delete Student</a></li>
                                                                 <li><a href="AddNewYear.jsp?ln=en">Add new Year</a></li>
 
                                                     </ul>
@@ -51,14 +51,14 @@
 						ViewBy <span class="down-arrow"></span>
 						<ul>
                                                         <li>
-                                                            <a href="AllStudent.jsp">
+                                                            <a href="AllStudent.jsp?ln=en">
 								All
                                                             </a>
 							</li>
 
                                                         
-							<li><a href="SearchByName.jsp">By Year</a></li>
-							<li><a href="ViewByAddress.jsp">By Address</a></li>
+							<li><a href="SearchByName.jsp?ln=en">By Year</a></li>
+							<li><a href="ViewByAddress.jsp?ln=en">By Address</a></li>
 
 						</ul>
 					</li>

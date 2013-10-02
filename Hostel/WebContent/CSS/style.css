@@ -530,12 +530,12 @@ h1 {
 .mytext
 {
 	font-family: 'saral', serif;
-        font-size:25px;
+        font-size:18px;
 }
 .myEngtext
 {
 	
-        font-size:20px;
+        font-size:18px;
 }
 .myField
 {
@@ -553,12 +553,12 @@ h1 {
     font-family: 'saral', serif;
    background-color:teal;
     color:white;
-    font-size:20px;
+    font-size:10px;
 }
 .myEngheader
 {
     
    background-color:teal;
     color:white;
-    font-size:20px;
+    font-size:10px;
 }
