@@ -157,7 +157,7 @@ public class AddStudent extends HttpServlet {
             if(i>0)
             {
                // next="HostelHome.jsp?msg=Insert Successfully";
-                next="MyGoal.jsp?id="+name+std+dob;
+                next="MyGoal.jsp?id="+name+std+dob+"&lan="+lan;
             }
             else
             {

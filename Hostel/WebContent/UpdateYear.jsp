@@ -30,7 +30,7 @@
         }
         if(i1>0&j1>0)
         {
-            next="AddNewYear.jsp";
+            next="AddNewYear.jsp?ln=en";
         }
         else
             {

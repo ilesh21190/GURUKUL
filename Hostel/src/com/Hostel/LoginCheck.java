@@ -58,6 +58,7 @@ public class LoginCheck extends HttpServlet {
                 HttpSession session=request.getSession();
                 session.setAttribute("user", user);
                 session.setAttribute("type", type);
+                session.setAttribute("login", "yes");
 
             }
 

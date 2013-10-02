@@ -27,7 +27,7 @@
                                                     <ul>
                                                     		<li><a href="EditStudent.jsp">Edit student</a></li>
                                                                 <li><a href="DeleteStudent.jsp">Delete Student</a></li>
-                                                                <li><a href="AddNewYear.jsp">Add new Year</a></li>
+                                                                <li><a href="AddNewYear.jsp?ln=en">Add new Year</a></li>
 
                                                     </ul>
                                                 

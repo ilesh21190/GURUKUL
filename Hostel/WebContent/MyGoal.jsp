@@ -4,6 +4,12 @@ and open the template in the editor.
 -->
 <%@page import="java.sql.*" contentType="text/HTML"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<% if(session.getAttribute("login")==null)
+{
+		response.sendRedirect("Login.jsp");
+}
+	%>
+
 <html>
     <head>
         <title></title>
@@ -15,6 +21,7 @@ and open the template in the editor.
         <link href="CSS/login.css" rel="stylesheet" type="text/css" media="screen" />
         <%
             String stuid = request.getParameter("id");
+        	String lan=request.getParameter("lan");
         %>
         <script type="text/javascript">
             var phototype;
@@ -65,7 +72,7 @@ and open the template in the editor.
                 }
                 else alert("Java Error: " + msg);
             }*/
-                window.open("MyGoal.jsp?id=<%=stuid%>",'_top');
+                window.open("MyGoal.jsp?id=<%=stuid%>&lan=<%=lan%>",'_top');
             }
         </script>
     </head>
@@ -124,7 +131,7 @@ and open the template in the editor.
 											<td>
 											</td>
 											<td></td>
-											<td><a href="ViewStudent.jsp?id=<%=stuid%>"><input type="button" Value="Finish" class="login_button"/></a></div></td>
+											<td><a href="ViewStudent.jsp?id=<%=stuid%>&lan=<%=lan%>"><input type="button" Value="Finish" class="login_button"/></a></div></td>
 										</tr>
                                     </table>
                                                                     <!-- end #content -->

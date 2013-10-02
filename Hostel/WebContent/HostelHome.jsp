@@ -9,6 +9,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
+<% if(session.getAttribute("login")==null)
+{
+		response.sendRedirect("Login.jsp");
+}
+	%>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,8 +44,9 @@
 		$('#language').val(ln1).attr("selected", "selected");
 		$( "#language").change(function() {
 			 
-				var ln = $( "select option:selected" ).val();
-				window.location.href="/Hostel/HostelHome.jsp?ln="+ln;
+				var lan = $( "select option:selected" ).val();
+				window.location.href="/Hostel/HostelHome.jsp?ln="+lan;
+				
 		});
 });
 	

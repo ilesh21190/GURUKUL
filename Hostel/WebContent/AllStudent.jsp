@@ -7,8 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="com.Hostel.*,java.sql.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
+<% if(session.getAttribute("login")==null)
+{
+		response.sendRedirect("Login.jsp");
+}
+	%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="keywords" content="" />
@@ -80,10 +85,10 @@ $(document).ready(function(){
                                                     <center><p id="delete" style="color:red;font-size:20px">Delete Successfully...</p></center>
                                                     <center><p id="deletecon" style="color:red;font-size:20px">Select for Delete...</p></center>
                                                     <table width="100%" border="1">
-                                                        <tr class="myheader">
+                                                        <tr class="I18NHeader">
                                                             <th><label>iv&#xb7;a4IRnu> pu&#xbd; nam</label></th>
                                                             <th><label > 2or`</label></th>
-                                                            <th><label >v&#x38;&#x52;</label></th>
+                AllStudent.jsp                                            <th><label >v&#x38;&#x52;</label></th>
                                                               <th><label>S3e3s</label></th>
                                                             <th><label>jovo</label></th>
                                                             <th><label>su2aro</label></th>
@@ -114,15 +119,14 @@ $(document).ready(function(){
 												while(rsyear.next()){%>
 										                    
                                                             <td>
-                                                                <%=rsyear.getInt(1)%>
-                                                            </td>
+                                                                <%=rsyear.getInt(1)%>                                                            </td>
                                                             <%}%>
                                                             <td>
                                                                 <%=rs.getString(5)%>
                                                             </td>
 
                                                             <td>
-                                                                <a href="ViewStudent.jsp?id=<%=rs.getString(6)%>" target="_new">View</a>
+                                                                <a href="ViewStudent.jsp?id=<%=rs.getString(6)%>" >View</a>
                                                             </td>
                                                             <td>
                                                                 <a href="EditStudent.jsp?id=<%=rs.getString(6)%>">Edit</a>
